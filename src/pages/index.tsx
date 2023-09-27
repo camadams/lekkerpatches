@@ -64,7 +64,7 @@ function App() {
 
   return (
     <div className="bg-slate-400">
-      <div className="flex flex-col mx-auto w-4/5 h-screen  p-16 gap-6">
+      <div className="flex flex-col mx-auto 2xl:w-4/5 h-screen  2xl:p-16 py-16 px-3 gap-6">
         <div className="flex justify-between">
           <input
             className="p-4 w-1/2 h-10 border-2 border-gray-300 rounded-md"
