@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
-import { format } from "date-fns";
+import { format, set } from "date-fns";
 
 function formatt(value: string) {
   const today = new Date();
@@ -42,6 +42,7 @@ function App() {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newFilename = formatt(e.target.value);
     setFilename(newFilename);
+    setCopiedFileName(false);
     setFileContent(`<databaseChangeLog logicalFilePath="${newFilename}"
                     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -57,6 +58,8 @@ function App() {
   </changeSet>
 </databaseChangeLog>
     `);
+    setCopiedFileContent(false);
+    setDownLoadedFile(false);
   };
 
   return (
@@ -71,7 +74,7 @@ function App() {
           />
           {fileContent && (
             <button
-              className="bg-yellow-100 rounded-md px-2"
+              className="bg-yellow-100 hover:bg-yellow-200 rounded-md px-2"
               onClick={handleCopyToXml}
             >
               {downloadedFile ? "Downloaded ✅" : "Download File"}
@@ -85,7 +88,7 @@ function App() {
               <div className="flex justify-between mb-4">
                 <p>Filename:</p>
                 <button
-                  className="bg-yellow-100 rounded-md px-2"
+                  className="bg-yellow-100 hover:bg-yellow-200 rounded-md px-2"
                   onClick={handleCopyFilename}
                 >
                   {copiedFileName ? "Copied ✅" : "Copy File Name"}
@@ -102,7 +105,7 @@ function App() {
               <div className="flex justify-between mb-4">
                 <p>File Content:</p>
                 <button
-                  className="bg-yellow-100 rounded-md px-2"
+                  className="bg-yellow-100 hover:bg-yellow-200 rounded-md px-2"
                   onClick={handleCopyFileContent}
                 >
                   {copiedFileContent ? "Copied ✅" : "Copy File Content"}
