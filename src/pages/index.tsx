@@ -47,7 +47,7 @@ function App() {
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd"> 
 
-  <changeSet id="1" author="adminuser" runOnChange="true">
+  <changeSet id="1" author="adminuser">
     <preConditions onFail="MARK_RAN">
       <sqlCheck expectedResult="0">
       </sqlCheck>
